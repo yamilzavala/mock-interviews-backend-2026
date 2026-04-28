@@ -1,0 +1,20 @@
+src/controllers/infiniteScroll/post.controller.js
+  h_f392f4a323d128 10,12,15,20,25,33,35-39,50,56,58-59,63,66-68,72-73,78,82,87,93-101
+src/STATATEMENTS/search/STATEMENT.md
+  h_f392f4a323d128 1-37
+src/app.js
+  h_f392f4a323d128 2
+src/routes/search/user.routes.js
+  h_f392f4a323d128 2-5,8-30,32-34,38
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "affb77ed8b69d4097a41b94e7ebfa19883e4bb24",
+  "prompts": {},
+  "humans": {
+    "h_f392f4a323d128": {
+      "author": "yazavala_meli"
+    }
+  }
+}
