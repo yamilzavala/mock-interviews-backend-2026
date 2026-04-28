@@ -167,3 +167,80 @@ const getUsers = (req, res) => {
     hasMore: startIndex + limit < users.length
   });
 };
+
+
+-----------------------------------------------------------------
+
+🚀 Siguiente nivel (System Design)
+Ahora escalamos.
+
+🎤 PREGUNTA
+👉 What if this list has 1 million items and thousands of users?
+
+Quiero que hables de:
+caching
+backend performance
+frontend strategy
+posibles bottlenecks
+
+
+-----------------------------------------------------------------
+
+🧠 Respuesta ideal
+“At this scale, I would focus on backend performance, caching and frontend efficiency.
+
+On the backend, I would use cursor-based pagination with proper indexing to ensure efficient queries.
+
+I would introduce a caching layer using Redis, especially caching the first pages which are the most frequently accessed. I would also consider cache invalidation strategies if the data changes often.
+
+From a database perspective, indexing the cursor field is critical to avoid full table scans.
+
+On the frontend, I would use virtualization to render only visible items and implement request control to avoid unnecessary calls.
+
+Potential bottlenecks include database load, network latency and repeated requests, so I would also consider rate limiting and response optimization.”
+
+-----------------------------------------------------------------
+
+1. ¿Qué es TTL?
+TTL = Time To Live
+👉 es el tiempo que un dato vive en cache antes de expirar.
+Ejemplo:
+TTL = 60 segundos
+→ después de 60s se borra solo
+
+2. ¿Qué es Redis?
+👉 Redis es una base de datos en memoria (key-value)
+ultra rápida
+se usa para cache
+vive fuera de tu app (no como un objeto JS)
+🧠 Ejemplo mental
+KEY: posts:react:0
+VALUE: [{...}, {...}]
+TTL: 60s
+
+3. Indexes + Cursor Pagination (explicado BIEN)
+Esto es CLAVE. Si entendés esto, estás arriba del promedio.
+
+🔹 Problema sin index
+SELECT * FROM posts WHERE title ILIKE '%react%'
+👉 sin index → scan de toda la tabla (1M rows) ❌
+
+🔹 Con index
+CREATE INDEX idx_posts_title ON posts(title);
+CREATE INDEX idx_posts_id ON posts(id);
+
+👉 ahora busca mucho más rápido
+🔹 Cursor pagination (correcto)
+SELECT * FROM posts
+WHERE id > 100
+ORDER BY id ASC
+LIMIT 20;
+
+👉 ventajas:
+no usa OFFSET
+escala bien
+evita duplicados
+
+🔥 vs OFFSET (lo malo)
+LIMIT 20 OFFSET 100000
+👉 la DB igual recorre 100k filas ❌
