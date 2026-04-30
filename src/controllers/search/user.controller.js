@@ -39,6 +39,7 @@ const searchUsers = async (req, res) => {
                 pagination: {
                     nextCursor: null,
                     hasMore: false,
+                    total: 0,
                 }
             })
         }

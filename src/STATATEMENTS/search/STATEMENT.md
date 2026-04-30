@@ -35,3 +35,25 @@ For performance, I would use indexing on searchable fields, cursor-based paginat
 I would also consider ranking or relevance scoring to ensure the most useful results are returned first.
 
 To make the system robust, I would handle edge cases like empty queries, invalid parameters, and no results, and apply rate limiting and timeouts to protect the system under load.”
+
+------------------------------------
+
+🚀 Último paso (cerramos fuerte)
+🎤 System Design follow-up
+👉 What if this search system needs to handle millions of users globally?
+
+Quiero que hables de:
+caching strategy (más profundo)
+CDN / edge
+database scaling
+posibles bottlenecks
+
+------------------------------------
+
+I would design the system focusing on scalability and performance. I would use a multi-layered caching strategy, combining CDN caching at the edge and Redis at the backend to reduce latency and database load.
+
+For frequently searched queries, I would use cache warming to preload results, and apply TTL-based cache invalidation to keep data fresh.
+
+On the database side, I would rely on indexing and read replicas to handle high read traffic. For large-scale search, I would move to a search engine like Elasticsearch, which provides efficient querying and relevance scoring.
+
+Finally, I would monitor bottlenecks such as database load, CPU-heavy operations, and network latency, and scale horizontally using multiple instances behind a load balancer.
