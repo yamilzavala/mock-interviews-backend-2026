@@ -64,7 +64,7 @@ const searchUsers = async (req, res) => {
         const data = results.slice(0, limit)
 
         // matadata
-        const nextCursor = data ? [data.length - 1].id : null;
+        const nextCursor = data ? data[data.length - 1].id : null;
         const total = results.length;
         const hasMore = results.length > limit;
 

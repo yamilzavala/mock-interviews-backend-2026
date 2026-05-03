@@ -37,6 +37,6 @@ app.use('/api/posts', postRoutes)
 app.use('/api/users-table', usersTableRoute)
 
 // users-search
-app.use('/api/users-search', searchUsersRoute)
+app.use('/api/search-users', searchUsersRoute)
 
 module.exports = app;

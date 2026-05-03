@@ -87,14 +87,16 @@ const getPosts2 = async (req, res) => {
     
         const response = {
             data,
-            nextCursor,
-            hasMore,
-            total
+            pagination: {
+                nextCursor,
+                hasMore,
+                total,
+            },
         }
-    
+
         // save cache (TTL 60s)
         //await redis.setEx(cachekey, 60, JSON.stringify(response))
-    
+
         res.status(200).json(response)
     } catch (error) {
         console.error(error)
