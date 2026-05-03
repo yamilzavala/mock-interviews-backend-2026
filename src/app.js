@@ -3,6 +3,7 @@ const cors = require('cors');
 const userRoutes = require('./routes/search/user.routes')
 const postRoutes = require('./routes/infiniteScroll/post.routes')
 const usersTableRoute = require('./routes/full-interview/users-table/users.route')
+const searchUsersRoute = require('./routes/full-interview/searchUsers/searchUsers.route')
 
 const app = express();
 const allowedOrigins = (process.env.CORS_ORIGIN || 'http://localhost:5173,http://localhost:3000')
@@ -35,5 +36,7 @@ app.use('/api/posts', postRoutes)
 // full interviews - users-table
 app.use('/api/users-table', usersTableRoute)
 
+// users-search
+app.use('/api/users-search', searchUsersRoute)
 
 module.exports = app;

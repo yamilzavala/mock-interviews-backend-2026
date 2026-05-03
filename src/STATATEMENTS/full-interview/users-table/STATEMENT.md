@@ -65,7 +65,7 @@ Backend:
 On the backend, I would design a /users endpoint that supports query parameters like search, role, and page. The backend would handle filtering, pagination, and return metadata like total results and total pages.
 
 To scale, I would rely on database indexing for fast queries, introduce caching for frequent requests, and potentially use a search engine like Elasticsearch for more advanced search capabilities.
+For scalability perspective, the backend can be horizontally scaled using multiple instances behind a load balancer
 
 Closing:
-
 Overall, the frontend stays simple and focused on UX, while the backend handles data processing and scalability.
