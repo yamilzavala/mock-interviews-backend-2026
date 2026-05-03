@@ -1,0 +1,16 @@
+src/controllers/full-interview/searchUsers/searchUsers.controller.js
+  h_f392f4a323d128 33,69
+src/STATATEMENTS/full-interview/searchUsers/STATEMENT.md
+  h_f392f4a323d128 25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "9ceb3930ffc95bc0cbe3b78ebfdd062a3a3751e9",
+  "prompts": {},
+  "humans": {
+    "h_f392f4a323d128": {
+      "author": "yazavala_meli"
+    }
+  }
+}
