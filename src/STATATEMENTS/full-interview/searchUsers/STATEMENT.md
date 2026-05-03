@@ -22,7 +22,7 @@ Si te lo preguntan todo junto:
 
 "I would design the frontend using a custom hook that handles debouncing, caching, and request cancellation using AbortController to avoid race conditions. The UI would remain responsive by using local cache and proper loading states.
 
-On the backend, I would design a /users endpoint that follows a pipeline: validation, scoring, filtering, sorting, and cursor-based pagination. I would also introduce Redis caching for repeated queries.
+On the backend, I would design a /users endpoint that follows a pipeline: validation, cache, scoring, filtering, sorting, and cursor-based pagination. I would also introduce Redis caching for repeated queries.
 
 To scale the system, I would use a multi-layer caching strategy (frontend cache, CDN, Redis), database indexing, and potentially integrate a search engine like Elasticsearch for advanced querying and better performance."
 

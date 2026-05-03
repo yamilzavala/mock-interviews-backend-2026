@@ -30,7 +30,7 @@ const searchUsers = async (req, res) => {
                 data: [],
                 pagination: {
                     hasmore: false,
-                    cursor: null,
+                    nextCursor: null,
                     total: 0
                 }
             })
@@ -66,7 +66,7 @@ const searchUsers = async (req, res) => {
         // matadata
         const nextCursor = data ? data[data.length - 1].id : null;
         const total = results.length;
-        const hasMore = results.length > limit;
+        const hasMore = results.length > data.length;
 
         const response = {
             data,
