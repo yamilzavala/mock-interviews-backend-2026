@@ -1,0 +1,19 @@
+src/controllers/full-interview/dataTable/dataTable.controller.js
+  s_b92db77a94acca::t_a40ca10929786f 10-11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.8",
+  "base_commit_sha": "7f2d5216d66a6c2d1c917af4cb8972c7237bea61",
+  "prompts": {},
+  "sessions": {
+    "s_b92db77a94acca": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "fe5f55a2-bb50-49da-a49f-424249c0449a",
+        "model": "default"
+      },
+      "human_author": "yazavala_meli <yamil.zavala@mercadolibre.com>"
+    }
+  }
+}
