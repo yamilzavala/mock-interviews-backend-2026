@@ -3,6 +3,7 @@ const cors = require('cors');
 const userRoutes = require('./routes/search/user.routes')
 const postRoutes = require('./routes/infiniteScroll/post.routes')
 const usersTableRoute = require('./routes/full-interview/users-table/users.route')
+const dataTableRoute = require('./routes/full-interview/dataTable/dataTable.route')
 const searchUsersRoute = require('./routes/full-interview/searchUsers/searchUsers.route')
 
 const app = express();
@@ -35,6 +36,9 @@ app.use('/api/posts', postRoutes)
 
 // full interviews - users-table
 app.use('/api/users-table', usersTableRoute)
+
+// full interviews - data-table
+app.use('/api/table', dataTableRoute)
 
 // users-search
 app.use('/api/search-users', searchUsersRoute)
