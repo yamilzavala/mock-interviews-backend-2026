@@ -75,3 +75,13 @@ The API layer would be stateless and horizontally scalable behind a load balance
 Finally, to reduce latency for global users, I would use CDN and potentially edge deployments.
 
 The main bottlenecks would be database load, cache misses, and network latency, so the system should be designed to minimize direct database access as much as possible."
+
+-----------------------------------
+
+🧠 Versión ideal (compacta)
+
+“I would start with client-side filtering, sorting and pagination for small datasets, using useMemo to derive data efficiently. The UI would be split into reusable components like Table, Filters and Pagination.
+
+For larger datasets, I would move these operations to the backend using query parameters and cursor-based pagination.
+
+At scale, I would introduce a multi-layer caching strategy with CDN and Redis, use indexing in the database, and potentially integrate Elasticsearch for advanced queries. The system would scale horizontally behind a load balancer.”
