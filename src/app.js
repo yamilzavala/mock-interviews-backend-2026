@@ -5,6 +5,8 @@ const postRoutes = require('./routes/infiniteScroll/post.routes')
 const usersTableRoute = require('./routes/full-interview/users-table/users.route')
 const dataTableRoute = require('./routes/full-interview/dataTable/dataTable.route')
 const searchUsersRoute = require('./routes/full-interview/searchUsers/searchUsers.route')
+const likesRoutes = require('./routes/full-interview/likes/likes.route')
+const autocompleteRoute = require('./routes/full-interview/autocomplete/autocomplete.route')
 
 const app = express();
 const allowedOrigins = (process.env.CORS_ORIGIN || 'http://localhost:5173,http://localhost:3000')
@@ -42,5 +44,11 @@ app.use('/api/table', dataTableRoute)
 
 // users-search
 app.use('/api/search-users', searchUsersRoute)
+
+// likes
+app.use('/api/likes', likesRoutes)
+
+// autocomplete
+app.use('/api/autocomplete', autocompleteRoute)
 
 module.exports = app;
