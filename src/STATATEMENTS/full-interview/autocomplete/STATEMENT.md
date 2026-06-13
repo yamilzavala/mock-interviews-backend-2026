@@ -54,7 +54,7 @@ Part 2 — Backend
 
 I would design the endpoint as:
 
-GET /users?search=john&limit=10&cursor=100
+GET /api/autocomplete/users?search=john&limit=10&cursor=100
 
 The API should validate and normalize inputs, support cursor-based pagination, and return metadata such as total results, hasMore, and nextCursor. For search relevance, I would rank results using a simple scoring strategy: exact match, startsWith, and contains. I would also cache frequent searches using Redis. If the API becomes slow, I would use caching, database indexes, query optimization, and potentially move the search to a dedicated search engine.
 

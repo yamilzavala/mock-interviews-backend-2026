@@ -40,8 +40,8 @@ const autocompleteUsers = async (req, res) => {
       })
     }
 
-    // empty query
-    if (!search.trim()) {
+    // empty query - min chars
+    if (!search.trim() || search.trim().length < 2) {
       return res.status(200).json({
         data: [],
         pagination: {
@@ -52,53 +52,25 @@ const autocompleteUsers = async (req, res) => {
       })
     }
 
-    // min chars
-    if (search.trim().length < 2) {
-      return res.status(200).json({
-        data: [],
-        pagination: {
-          hasMore: false,
-          nextCursor: null,
-          total: 0,
-        },
-      })
-    }
-
-    const normalizedSearch =
-      search.toLowerCase()
-
-    const cacheKey = `${normalizedSearch}-${limit}-${cursor}`
+    const normalizedSearch = search.toLowerCase()
 
     // cache
+    const cacheKey = `${normalizedSearch}-${limit}-${cursor}`
     if (cache.has(cacheKey)) {
       return res.status(200).json(cache.get(cacheKey))
     }
-
-    // simulate slow api
-    await new Promise((res) =>
-      setTimeout(res, 800)
-    )
 
     // scoring
     const scoredUsers = USERS_DB.map((user) => {
       let score = 0
 
-      const normalizedName =
-        user.name.toLowerCase()
+      const normalizedName = user.name.toLowerCase()
 
       if (normalizedName === normalizedSearch) {
         score = 3
-      } else if (
-        normalizedName.startsWith(
-          normalizedSearch
-        )
-      ) {
+      } else if (normalizedName.startsWith(normalizedSearch)) {
         score = 2
-      } else if (
-        normalizedName.includes(
-          normalizedSearch
-        )
-      ) {
+      } else if (normalizedName.includes(normalizedSearch)) {
         score = 1
       }
 
@@ -111,21 +83,13 @@ const autocompleteUsers = async (req, res) => {
       .sort((a, b) => b.score - a.score)
 
     // cursor pagination
-    const filteredResults = scoredUsers.filter(
-      (user) => user.id > cursor
-    )
-
-    const data = filteredResults.slice(
-      0,
-      limit
-    )
-
+    const filteredResults = scoredUsers.filter((user) => user.id > cursor)
+    const data = filteredResults.slice(0,limit)
     const nextCursor = data.length
       ? data[data.length - 1].id
       : null
 
-    const hasMore =
-      filteredResults.length > data.length
+    const hasMore = filteredResults.length > data.length
 
     const response = {
       data,

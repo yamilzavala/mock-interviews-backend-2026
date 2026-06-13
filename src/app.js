@@ -7,6 +7,7 @@ const dataTableRoute = require('./routes/full-interview/dataTable/dataTable.rout
 const searchUsersRoute = require('./routes/full-interview/searchUsers/searchUsers.route')
 const likesRoutes = require('./routes/full-interview/likes/likes.route')
 const autocompleteRoute = require('./routes/full-interview/autocomplete/autocomplete.route')
+const formBuilderRoute = require('./routes/full-interview/formBuilder/formBuilder.route')
 
 const app = express();
 const allowedOrigins = (process.env.CORS_ORIGIN || 'http://localhost:5173,http://localhost:3000')
@@ -50,5 +51,8 @@ app.use('/api/likes', likesRoutes)
 
 // autocomplete
 app.use('/api/autocomplete', autocompleteRoute)
+
+// form builder
+app.use('/api/forms', formBuilderRoute)
 
 module.exports = app;
