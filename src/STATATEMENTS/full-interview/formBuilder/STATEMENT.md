@@ -45,10 +45,13 @@ This approach is scalable because the form is driven entirely by configuration."
 🎤 BACKEND FOLLOW-UP
 👉 “How would you persist and validate these dynamic forms on the backend?”
 
-🎤 Cómo lo explicás como senior
-I would send the form values as JSON to a POST endpoint. On the backend, I would use a validation middleware to validate the payload before it reaches the controller. The middleware would apply the same schema rules used by the frontend, including required fields, data types, allowed values, and conditional fields. This ensures that invalid data is rejected early and keeps the controller focused on business logic.
+🧠 Versión ideal (cómo sonarías top)
+“I would send the form data as JSON to a POST endpoint and validate it using a middleware on the backend, reapplying schema rules to ensure consistency and security.
 
-Once the request passes validation, the controller would delegate persistence to a service layer. Since the form is dynamic, I would persist the submission as a JSON document in the database rather than creating columns for every field. This makes the solution scalable because new fields can be added through configuration without requiring database schema changes or backend code modifications.
+I would persist the data as a JSON document, for example using JSONB in Postgres or a document database like MongoDB, which allows flexibility without schema changes.
+
+I would also consider schema versioning and indexing key fields if querying is required.”
+
 
 Client
   |
@@ -68,3 +71,10 @@ Service
   |
   v
 Database (JSONB)
+
+-------------------------------------------------
+
+🎤 SYSTEM DESIGN FOLLOW-UP
+👉 “What if we need to query submissions by specific fields, like role = 'Admin'?”
+
+If querying by specific fields becomes a common requirement, I would use PostgreSQL JSONB and create indexes on frequently queried fields such as role. This allows me to keep the flexibility of dynamic forms while still supporting efficient searches.
