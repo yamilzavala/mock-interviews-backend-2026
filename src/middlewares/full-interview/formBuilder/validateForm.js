@@ -43,9 +43,13 @@ function validateForm(req, res, next) {
             errors[id] = `Invalid option`;
             return;
         }
-
-        next()
     })
+
+    if(Object.keys(errors).length > 0) {
+        res.status(400).json({errors})
+    }
+
+    next()
 }
 
 module.exports = validateForm
